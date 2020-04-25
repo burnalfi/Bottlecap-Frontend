@@ -1,0 +1,32 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+
+<form action="/main/parse/" method="POST">
+    {% csrf_token %}
+
+    <div>
+        <p>
+            <input type="submit" name="logout" value="Logout">
+        </p>
+    </div>
+
+    <div>
+        <p>
+            <input type="number" placeholder="Quantity" name="quantity" required>
+        </p>
+    </div>
+
+    <div>
+        <input type="text" placeholder="Shipment Address" name="shipment_address" required> 
+    </div>
+
+    <div>
+        <p>
+            <input type="submit" name="order" value="Order">
+        </p>
+    </div>
+</form>
+
+
+{% endblock %}

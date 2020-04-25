@@ -1,0 +1,27 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+
+{% load static %}
+<form action="/main/parse/" method="POST">
+    {% csrf_token %}
+    <div>
+        <p>
+            <input type="text" placeholder="Email or Phone Number" id="credential" name="credential_input">
+        </p>    
+    </div>
+    <div>
+        <p>
+            <input type="password" placeholder="Password" id="password" name="password_input">
+        </p>
+    </div>
+    <div>
+        <input type="submit" name="login" value="Login">
+        
+        <input type="submit" name="register" value="Register">
+    </div>
+    
+        
+    
+</form>
+{% endblock %}

@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    {% load static %} <!-- ini code block jangan dihapus  -->
+    
+    <style>
+        ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #97ccaa;
+        }
+        
+        a{
+            text-align: left;
+        }
+        
+
+        li a ul{
+        display: block;
+        color: white;
+        text-align: left;
+        padding: 16px;
+        text-decoration: none;
+        }
+
+        li a ul:hover {
+        background-color: #b8d4c2;
+        }
+</style>
+    </style>
+    <title>Bottlecap</title>
+</head>
+<body>
+    <ul>
+        
+    </ul>
+    {% block content %} {% endblock %}
+</body>
+</html>

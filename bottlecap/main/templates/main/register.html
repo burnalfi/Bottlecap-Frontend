@@ -1,0 +1,19 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+{% load static %}
+
+<form action="/main/parse/" method="POST">
+{% csrf_token %}
+    <div>
+        <input type="radio" id ="personal" name="customer" value="Personal" checked>
+        <label for="personal">Personal</label>
+        <input type="radio" id="organization" name="customer" value="Organization">
+        <label for="organization">Organization</label>
+    </div>
+    <div>
+        <input type="submit" name="next" value="Next">
+    </div>
+</form>
+
+{% endblock %}

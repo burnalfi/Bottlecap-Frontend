@@ -1,0 +1,41 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+
+<form action="/main/parse/" method="POST">
+    {% csrf_token %}
+    <div>
+        <p>
+            <input type="text" placeholder="Full Name" name="personal_full_name" required>
+        </p>
+    </div>
+    <div>
+        <p>  
+            <input type="tel" placeholder="Phone Number" name="personal_phone_number" required>
+        </p>
+    </div>
+    <div>
+        <p>
+            <input type="email" placeholder="Email" name="personal_email" required>
+        </p>
+    </div>
+    <div>
+        <p>
+            <input type="password" placeholder="Password" name="personal_password" required>
+        </p>
+    </div>
+    <div>
+        <p>
+            <input type="password" placeholder="Confirm Password" name="personal_confpassword" required>
+        </p>
+    </div>
+
+    <div>
+        <p>
+            <input type="submit" name="personal sign up" value="Sign Up">
+        </p>
+    </div>
+</form>
+
+
+{% endblock %}
