@@ -1,15 +1,14 @@
 {% extends "main/base.html" %}
 
 {% block content %}
+<div>
+    <button>
+        <a class="button is-danger" href="{% url 'main-logout' %}">Logout</a>
+    </button>
+</div>
 
 <form action="/main/parse/" method="POST">
     {% csrf_token %}
-
-    <div>
-        <p>
-            <input type="submit" name="logout" value="Logout">
-        </p>
-    </div>
 
     <div>
         <p>

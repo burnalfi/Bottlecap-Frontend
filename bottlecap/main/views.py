@@ -7,6 +7,10 @@ import requests
 def login(request):
     return render(request, 'main/login.html', {})
 
+def logout(request):
+    usersesh = request.session.pop('user', 'default')
+    return redirect('/main/login/')
+
 def register(request):
     return render(request, 'main/register.html', {})
 
@@ -121,12 +125,10 @@ def parse(request):
             request.session['user'] = r.json()['session_id']
             return redirect("/main/order/")
         
-        else:
-            return redirect("/main/login/")
-
-    if(Logout == 'Logout'):
-        usersesh = request.session.pop('user', 'default')
-        return redirect('/main/login/')
+        return redirect("/main/login/")
 
     if(Order == 'Order'):
-        return redirect("/main/orders/")
+        if 'user' in request.session:
+            return redirect("/main/orders/")
+        
+        return redirect("/main/login/")

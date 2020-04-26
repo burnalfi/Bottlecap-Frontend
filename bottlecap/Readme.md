@@ -1,0 +1,18 @@
+# Bottlecap Frontend
+
+
+# Requirements:
+- Django Web Framework
+- python requests (optional)
+
+# Installing through bash/command-line:
+- On Linux: python3 -m pip install Django
+
+- On Windows: py -m pip install Django
+
+# Running dev server:
+- run the manage.py file through bash/command-line using these commands
+
+- On Linux: python3 manage.py
+
+- On Windows: py manage.py
