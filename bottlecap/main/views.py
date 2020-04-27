@@ -8,7 +8,9 @@ def login(request):
     return render(request, 'main/login.html', {})
 
 def logout(request):
-    usersesh = request.session.pop('user', 'default')
+    if request.session.has_key('user'):
+        request.session.flush()
+        
     return redirect('/main/login/')
 
 def register(request):
@@ -21,10 +23,20 @@ def register_organization(request):
     return render(request, 'main/regorganization.html', {})
 
 def order(request):
-    return render(request, 'main/order.html', {})
+    if 'user' in request.session:
+        usersesh = request.session['user']
+        return render(request, 'main/order.html', {})
+
+    else:    
+        return redirect('/main/login/')
 
 def orders(request):
-    return render(request, 'main/orders.html', {})
+    if 'user' in request.session:
+        usersesh = request.session['user']
+        return render(request, 'main/orders.html', {})
+    
+    else:
+        return redirect('/main/login/')
     
 def home(request):
     return render(request, 'main/home.html', {})
@@ -128,7 +140,6 @@ def parse(request):
         return redirect("/main/login/")
 
     if(Order == 'Order'):
-        if 'user' in request.session:
-            return redirect("/main/orders/")
+        return redirect("/main/orders/")
         
-        return redirect("/main/login/")
+        
