@@ -3,7 +3,7 @@
 {% block content %}
 {% load static %}
 
-<form action="/main/parse/" method="POST">
+<!-- <form action="/main/parse/" method="POST">
 {% csrf_token %}
     <div>
         <input type="radio" id ="personal" name="customer" value="Personal" checked>
@@ -14,6 +14,158 @@
     <div>
         <input type="submit" name="next" value="Next">
     </div>
-</form>
+</form> -->
+
+<div class="bg-light py-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Register</strong></div>
+    </div>
+  </div>
+</div>  
+
+<div class="site-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h3 class="text-center">Register</h3>
+        <hr>
+        <br>
+
+        <div id="selection">
+          <div class="row">
+            <div class="col-md-6" id="personal_selected">
+              <div class="card hoverable">
+                <div class="card-body text-center text-gray">
+                  <h5>Register</h5>
+                  <h3>as Personal</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6" id="organization_selected">
+              <div class="card hoverable">
+                <div class="card-body text-center text-white bg-success">
+                  <h5>Register</h5>
+                  <h3>as Organization</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="main-form">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card hoverable">
+                <div class="p-2 bg-success text-white text-center selection_sm" id="personal_selected_sm">
+                  <h5>Personal Account</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card hoverable">
+                <div class="p-2 bg-default text-center selection_sm" id="organization_selected_sm">
+                  <h5>Organization Account</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <form id="personal_form">
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="number" name="personal_phone_number" class="form-control" required="">
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" name="personal_email" class="form-control" required="">
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input type="password" name="personal_password" class="form-control" required="">
+            </div>
+            <div class="form-group">
+              <label>Username</label>
+              <input type="text" name="personal_full_name" class="form-control" required="">
+            </div>
+            <div class="form-group">
+              <label>Address</label>
+              <textarea name="personal_address" class="form-control" required="" rows="2"></textarea>
+            </div>
+            <div class="form-group">
+              <label>City</label>
+              <input type="text" name="personal_city" class="form-control" required="">
+            </div>
+            <div class="form-group">
+              <label>Postal Code</label>
+              <input type="number" name="personal_postal_code" class="form-control" required="">
+            </div>
+            <hr>
+            <div class="text-center">
+              <button type="button" class="btn btn-md btn-success">Register Now</button>
+            </div>
+          </form>
+
+          <form id="organization_form">
+            <div class="form-group">
+              <label>Organization Name</label>
+              <input type="text" name="organization_name" class="form-control" required="">
+            </div>
+            <div class="form-group">
+              <label>Organization Address</label>
+              <textarea name="organization_name" class="form-control" required="" rows="2"></textarea>
+            </div>
+            <div class="form-group">
+              <label>Organization City</label>
+              <input type="text" name="organization_city" class="form-control" required="">
+            </div>
+            <div class="form-group">
+              <label>Organization Postal Code</label>
+              <input type="number" name="organization_city" class="form-control" required="">
+            </div>
+            <div class="form-group">
+              <label>Organization Address</label>
+              <input type="email" name="personal_email" class="form-control" required="">
+            </div>
+            <div class="form-group">
+              <label>Representative Phone Number</label>
+              <input type="number" name="repr_phone_number" class="form-control" required="">
+            </div>
+            <div class="form-group">
+              <label>Representative Email Address</label>
+              <input type="email" name="repr_email" class="form-control" required="">
+            </div>
+            <div class="form-group">
+              <label>Representative Password</label>
+              <input type="password" name="repr_email" class="form-control" required="">
+            </div>
+            <div class="form-group">
+              <label>Representative Fullname</label>
+              <input type="text" name="repr_full_name" class="form-control" required="">
+            </div>
+            <hr>
+            <div class="text-center">
+              <button type="button" class="btn btn-md btn-success">Register Now</button>
+            </div>
+          </form>
+        </div>
+
+        <br>
+        <hr>
+        <br>
+        <div class="text-center">
+          Already registered ? <a href="login.html">Login here</a><br>
+          <hr>
+          need more ?
+          <a href="email_verify.html">Email Verify</a>, <a href="phone_verify.html">Verify my phone</a> 
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
 
 {% endblock %}

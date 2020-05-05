@@ -4,6 +4,18 @@ from django.http import HttpResponse
 
 import requests
 
+def about(request):
+    return render(request, 'main/about.html', {})
+
+def cart(request):
+    return render(request, 'main/cart.html', {})
+
+def contact(request):
+    return render(request, 'main/contact.html', {})
+
+def home(request):
+    return render(request, 'main/index.html', {})
+
 def login(request):
     return render(request, 'main/login.html', {})
 
@@ -13,14 +25,8 @@ def logout(request):
         
     return redirect('/main/login/')
 
-def register(request):
-    return render(request, 'main/register.html', {})
-
-def register_personal(request):
-    return render(request, 'main/regpersonal.html', {})
-
-def register_organization(request):
-    return render(request, 'main/regorganization.html', {})
+def product(request):
+    return render(request, 'main/product.html', {})
 
 def order(request):
     if 'user' in request.session:
@@ -37,9 +43,20 @@ def orders(request):
     
     else:
         return redirect('/main/login/')
+
+        
+def register(request):
+    return render(request, 'main/register.html', {})
+
+def register_personal(request):
+    return render(request, 'main/regpersonal.html', {})
+
+def register_organization(request):
+    return render(request, 'main/regorganization.html', {})
+
+def term(request):
+    return render(request, 'main/term.html', {})
     
-def home(request):
-    return render(request, 'main/home.html', {})
 
 def parse(request):
     Register = request.POST.get('register')
