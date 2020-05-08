@@ -71,7 +71,7 @@
             </div>
           </div>
           <hr>
-          <form id="personal_form">
+          <form id="personal_form" action="/main/parse/" action="POST">
             <div class="form-group">
               <label>Phone Number</label>
               <input type="number" name="personal_phone_number" class="form-control" required="">
@@ -106,7 +106,7 @@
             </div>
           </form>
 
-          <form id="organization_form">
+          <form id="organization_form" action="/main/parse/" method="POST">
             <div class="form-group">
               <label>Organization Name</label>
               <input type="text" name="organization_name" class="form-control" required="">
