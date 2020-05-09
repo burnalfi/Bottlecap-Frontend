@@ -70,31 +70,22 @@ def parse(request):
     if(Register == 'Register'):
         return redirect("/main/register/")
 
-    if(RegNext == 'Next'):
-        
-        Customer = request.POST.get('customer')
-        
-        if(Customer == 'Personal'):
-            return redirect("/main/register/personal/")
 
-        elif(Customer == 'Organization'):
-            return redirect("/main/register/organization/")
-
-        else:
-            return HttpResponse("<h1>Didn't Work</h1>")
-
-    if(RegPersonal == 'Sign Up'):
+    if(RegPersonal == 'Sign Up Personal'):
         
         personal_full_name = request.POST.get('personal_full_name')
         personal_phone_number = request.POST.get('personal_phone_number')
         personal_email = request.POST.get('personal_email')
         personal_password = request.POST.get('personal_password')
         personal_conf_password = request.POST.get('personal_confpassword')
+        personal_address = request.POST.get('personal_address')
+        personal_city = request.POST.get('personal_city')
+        personal_postal_code = request.POST.get('personal_postal_code') 
         
         if(personal_conf_password == personal_password):
             
             data = {'personal_phone_number' : personal_phone_number, 'personal_email' : personal_email, 'personal_password' : personal_password,
-                    'personal_full_name' : personal_full_name, 'personal_city' : '', 'personal_address' : '', 'personal_postal_code' : ''}
+                    'personal_full_name' : personal_full_name, 'personal_city' : personal_city, 'personal_address' : personal_address, 'personal_postal_code' : personal_postal_code}
                 
             r = requests.post('http://127.0.0.1:5000/register/personal', data = data)
 
@@ -102,19 +93,22 @@ def parse(request):
                 return redirect("/main/login/")
 
             elif(r.status_code == 400 | r.status_code == 500):
-                return redirect("/main/register/personal/")
+                return redirect("/main/register/")
                 
             else:
-                return redirect("/main/register/personal/")          
+                return redirect("/main/register/")          
             
 
         else:
-            return redirect("/main/register/personal/")
+            return redirect("/main/register/")
 
-        return redirect("/main/register/personal/")
+        return redirect("/main/register/")
 
-    if(RegOrganization == 'Sign Up'):
+    if(RegOrganization == 'Sign Up Organization'):
         organization_name = request.POST.get('organization_name')
+        organization_address = request.POST.get('organization_address')
+        organization_city = request.POST.get('organization_city')
+        organization_postal_code = request.POST.get('organization_postal_code')
         repr_phone_number = request.POST.get('repr_phone_number')
         repr_email = request.POST.get('repr_email')
         repr_password = request.POST.get('repr_password')
@@ -125,7 +119,7 @@ def parse(request):
             
             data = {'organization_name' : organization_name, 'repr_phone_number' : repr_phone_number, 
                     'repr_email' : repr_email, 'repr_password' : repr_password, 'repr_full_name' : repr_full_name, 
-                    'organization_address' : '', 'organization_city' : '', 'organization_postal_code' : ''}
+                    'organization_address' : organization_address, 'organization_city' : organization_city, 'organization_postal_code' : organization_postal_code}
 
             r = requests.post('http://127.0.0.1:5000/register/organization', data = data)
 
@@ -133,14 +127,14 @@ def parse(request):
                 return redirect('/main/login/')
 
             elif(r.status_code == 400 | r.status_code == 500):
-                return redirect ('/main/login/')
+                return redirect ('/main/register/')
             
             else:
-                return redirect('/main/login/')
+                return redirect('/main/register/')
         else:
-            return redirect('/main/register/organization/')
+            return redirect('/main/register/')
         
-        return redirect('main/register/personal/')
+        return redirect('main/register/')
 
     if(Login == 'Login'):
         log_email = request.POST.get('credential_input')
@@ -152,7 +146,7 @@ def parse(request):
 
         if(r.json()['status'] == True):
             request.session['user'] = r.json()['session_id']
-            return redirect("/main/order/")
+            return redirect("/main/cart/")
         
         return redirect("/main/login/")
 

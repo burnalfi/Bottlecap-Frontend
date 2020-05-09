@@ -19,7 +19,7 @@
 <div class="bg-light py-3">
   <div class="container">
     <div class="row">
-      <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Register</strong></div>
+      <div class="col-md-12 mb-0"><a href="{% url 'main-home' %}">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Register</strong></div>
     </div>
   </div>
 </div>  
@@ -73,6 +73,7 @@
           <hr>
           <form id="personal_form" action="/main/parse/" action="POST">
             <div class="form-group">
+              {% csrf_token %}
               <label>Phone Number</label>
               <input type="number" name="personal_phone_number" class="form-control" required="">
             </div>
@@ -81,12 +82,16 @@
               <input type="email" name="personal_email" class="form-control" required="">
             </div>
             <div class="form-group">
+              <label>Username</label>
+              <input type="text" name="personal_full_name" class="form-control" required="">
+            </div>
+            <div class="form-group">
               <label>Password</label>
               <input type="password" name="personal_password" class="form-control" required="">
             </div>
             <div class="form-group">
-              <label>Username</label>
-              <input type="text" name="personal_full_name" class="form-control" required="">
+              <label>Confirm Password</label>
+              <input type="password" name="personal_confpassword" class="form-control" required="">
             </div>
             <div class="form-group">
               <label>Address</label>
@@ -102,18 +107,19 @@
             </div>
             <hr>
             <div class="text-center">
-              <button type="button" class="btn btn-md btn-success">Register Now</button>
+              <input type="submit" class="btn btn-md btn-success" name="personal sign up" value="Sign Up Personal"></input>
             </div>
           </form>
 
           <form id="organization_form" action="/main/parse/" method="POST">
             <div class="form-group">
+              {% csrf_token %}
               <label>Organization Name</label>
               <input type="text" name="organization_name" class="form-control" required="">
             </div>
             <div class="form-group">
               <label>Organization Address</label>
-              <textarea name="organization_name" class="form-control" required="" rows="2"></textarea>
+              <textarea name="organization_address" class="form-control" required="" rows="2"></textarea>
             </div>
             <div class="form-group">
               <label>Organization City</label>
@@ -121,11 +127,7 @@
             </div>
             <div class="form-group">
               <label>Organization Postal Code</label>
-              <input type="number" name="organization_city" class="form-control" required="">
-            </div>
-            <div class="form-group">
-              <label>Organization Address</label>
-              <input type="email" name="personal_email" class="form-control" required="">
+              <input type="number" name="organization_postal_code" class="form-control" required="">
             </div>
             <div class="form-group">
               <label>Representative Phone Number</label>
@@ -137,7 +139,11 @@
             </div>
             <div class="form-group">
               <label>Representative Password</label>
-              <input type="password" name="repr_email" class="form-control" required="">
+              <input type="password" name="repr_password" class="form-control" required="">
+            </div>
+            <div class="form-group">
+              <label>Confirm Password</label>
+              <input type="password" name="repr_confpassword" class="form-control" required="">
             </div>
             <div class="form-group">
               <label>Representative Fullname</label>
@@ -145,7 +151,7 @@
             </div>
             <hr>
             <div class="text-center">
-              <button type="button" class="btn btn-md btn-success">Register Now</button>
+              <input type="submit" class="btn btn-md btn-success" name="organization sign up" value="Sign Up Organization"></input>
             </div>
           </form>
         </div>
@@ -154,7 +160,7 @@
         <hr>
         <br>
         <div class="text-center">
-          Already registered ? <a href="login.html">Login here</a><br>
+          Already registered ? <a href="{% url 'main-login' %}">Login here</a><br>
           <hr>
           need more ?
           <a href="email_verify.html">Email Verify</a>, <a href="phone_verify.html">Verify my phone</a> 
