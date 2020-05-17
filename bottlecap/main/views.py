@@ -66,6 +66,7 @@ def parse(request):
     Login = request.POST.get('login')
     Logout = request.POST.get('logout')
     Order = request.POST.get('order')
+    Proceed = request.POST.get('proceed to checkout')
 
     if(Register == 'Register'):
         return redirect("/main/register/")
@@ -152,5 +153,14 @@ def parse(request):
 
     if(Order == 'Order'):
         return redirect("/main/orders/")
-        
+
+    if (Proceed == 'Proceed To Checkout'):
+        if('user' in request.session):
+            quantity = request.POST.get('quantity')
+            print(quantity)
+            return redirect("/main/home/")
+
+        else:
+            return redirect("/main/login/")
+            
         
